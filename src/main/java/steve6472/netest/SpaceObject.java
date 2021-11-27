@@ -14,6 +14,7 @@ public abstract class SpaceObject implements ISaveable
 {
 	public UUID id;
 	public Vector2d position;
+	public float rotation;
 
 	public SpaceObject(UUID id)
 	{

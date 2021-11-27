@@ -17,10 +17,12 @@ import steve6472.sge.main.networking.PacketData;
 public class SUpdatePosition extends SPacket
 {
 	Vector2d position;
+	float rotation;
 
-	public SUpdatePosition(Vector2d position)
+	public SUpdatePosition(Vector2d position, float rotation)
 	{
 		this.position = position;
+		this.rotation = rotation;
 	}
 
 	public SUpdatePosition()
@@ -34,7 +36,8 @@ public class SUpdatePosition extends SPacket
 		ConnectedClient connectedClient = server.findConnectedClient(getSender());
 		ServerPlayer player = server.findPlayer(connectedClient);
 		player.position.set(position);
-		server.sendPacketExcept(new CUpdatePosition(position, player.id), connectedClient);
+		player.rotation = rotation;
+		server.sendPacketExcept(new CUpdatePosition(position, rotation, player.id), connectedClient);
 	}
 
 	@Override
@@ -42,17 +45,19 @@ public class SUpdatePosition extends SPacket
 	{
 		output.writeDouble(position.x);
 		output.writeDouble(position.y);
+		output.writeShort((short) (rotation * (Short.MAX_VALUE / (Math.PI * 2f))));
 	}
 
 	@Override
 	public void input(PacketData input)
 	{
 		position = new Vector2d(input.readDouble(), input.readDouble());
+		rotation = (float) ((input.readShort() / (float) Short.MAX_VALUE) * (Math.PI * 2f));
 	}
 
 	@Override
 	public String toString()
 	{
-		return "SUpdatePosition{" + "position=" + position + '}';
+		return "SUpdatePosition{" + "position=" + position + ", rotation=" + rotation + '}';
 	}
 }

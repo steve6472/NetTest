@@ -18,10 +18,12 @@ public class CUpdatePosition extends CPacket
 {
 	Vector2d position;
 	UUID uuid;
+	float rotation;
 
-	public CUpdatePosition(Vector2d position, UUID uuid)
+	public CUpdatePosition(Vector2d position, float rotation, UUID uuid)
 	{
 		this.position = position;
+		this.rotation = rotation;
 		this.uuid = uuid;
 	}
 
@@ -36,7 +38,10 @@ public class CUpdatePosition extends CPacket
 		for (OtherPlayer player : client.space.players)
 		{
 			if (player.id.equals(uuid))
+			{
 				player.position.set(position);
+				player.rotation = rotation;
+			}
 		}
 	}
 
@@ -45,6 +50,7 @@ public class CUpdatePosition extends CPacket
 	{
 		output.writeDouble(position.x);
 		output.writeDouble(position.y);
+		output.writeShort((short) (rotation * (Short.MAX_VALUE / (Math.PI * 2f))));
 		output.writeUUID(uuid);
 	}
 
@@ -52,12 +58,13 @@ public class CUpdatePosition extends CPacket
 	public void input(PacketData input)
 	{
 		position = new Vector2d(input.readDouble(), input.readDouble());
+		rotation = (float) ((input.readShort() / (float) Short.MAX_VALUE) * (Math.PI * 2f));
 		uuid = input.readUUID();
 	}
 
 	@Override
 	public String toString()
 	{
-		return "CUpdatePosition{" + "position=" + position + ", uuid=" + uuid + '}';
+		return "CUpdatePosition{" + "position=" + position + ", uuid=" + uuid + ", rotation=" + rotation + '}';
 	}
 }

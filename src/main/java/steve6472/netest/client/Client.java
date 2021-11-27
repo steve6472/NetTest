@@ -77,10 +77,12 @@ public class Client extends UDPClient
 		rotation += rotationMot;
 		rotationMot *= 0.8;
 
+		rotation = (float) (rotation % (Math.PI * 2f));
+
 		if (!lastPos.equals(position))
 		{
 			lastPos.set(position);
-			sendPacket(new SUpdatePosition(position));
+			sendPacket(new SUpdatePosition(position, rotation));
 		}
 	}
 

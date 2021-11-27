@@ -14,8 +14,6 @@ import java.util.UUID;
  ***********************/
 public class OtherPlayer extends SpaceObject
 {
-	public Vector2d position;
-
 	public OtherPlayer(UUID id)
 	{
 		super(id);

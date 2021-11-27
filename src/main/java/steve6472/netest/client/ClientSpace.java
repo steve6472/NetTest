@@ -24,7 +24,9 @@ public class ClientSpace
 	{
 		for (OtherPlayer player : players)
 		{
-			stack.pushMatrix().translate((float) player.position.x, 0, (float) player.position.y);
+			stack.pushMatrix();
+			stack.translate((float) player.position.x, 0, (float) player.position.y);
+			stack.rotateY(player.rotation);
 			Models.SHIP.render(stack);
 			Models.SHIP_COLORED.render(stack);
 			stack.popMatrix();
