@@ -2,6 +2,7 @@ package steve6472.netest.client;
 
 import net.querz.nbt.tag.CompoundTag;
 import steve6472.netest.SpaceObject;
+import steve6472.sge.gfx.game.stack.Stack;
 
 import java.util.UUID;
 
@@ -18,13 +19,7 @@ public abstract class ClientSpaceObject extends SpaceObject
 		super(id);
 	}
 
-	@Override
-	public void tick()
-	{
-
-	}
-
-	public abstract void render();
+	public abstract void render(Stack stack);
 
 	@Override @Deprecated
 	public CompoundTag write()

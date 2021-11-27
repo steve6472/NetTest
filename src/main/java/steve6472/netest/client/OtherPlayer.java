@@ -1,8 +1,6 @@
 package steve6472.netest.client;
 
-import net.querz.nbt.tag.CompoundTag;
-import org.joml.Vector2d;
-import steve6472.netest.SpaceObject;
+import steve6472.sge.gfx.game.stack.Stack;
 
 import java.util.UUID;
 
@@ -12,29 +10,27 @@ import java.util.UUID;
  * Project: NetTest
  *
  ***********************/
-public class OtherPlayer extends SpaceObject
+public class OtherPlayer extends ClientSpaceObject
 {
 	public OtherPlayer(UUID id)
 	{
 		super(id);
-		position = new Vector2d();
-	}
-
-	@Override
-	public CompoundTag write()
-	{
-		return null;
-	}
-
-	@Override
-	public void read(CompoundTag tag)
-	{
-
 	}
 
 	@Override
 	public void tick()
 	{
 
+	}
+
+	@Override
+	public void render(Stack stack)
+	{
+		stack.pushMatrix();
+		stack.translate((float) position.x, 0, (float) position.y);
+		stack.rotateY(rotation);
+		Models.SHIP.render(stack);
+		Models.SHIP_COLORED.render(stack);
+		stack.popMatrix();
 	}
 }

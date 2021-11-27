@@ -12,13 +12,14 @@ import java.util.UUID;
  ***********************/
 public abstract class SpaceObject implements ISaveable
 {
-	public UUID id;
-	public Vector2d position;
+	public final UUID uuid;
+	public final Vector2d position;
 	public float rotation;
 
-	public SpaceObject(UUID id)
+	public SpaceObject(UUID uuid)
 	{
-		this.id = id;
+		this.uuid = uuid;
+		this.position = new Vector2d();
 	}
 
 	public abstract void tick();

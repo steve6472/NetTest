@@ -20,6 +20,7 @@ import java.util.UUID;
 public class Server extends UDPServer
 {
 	ServerSpace space;
+	public long serverTick;
 
 	//36210
 	public Server(int port)
@@ -35,12 +36,13 @@ public class Server extends UDPServer
 		setIPacketHandler(new IServerHandler());
 		start();
 
-		space = new ServerSpace();
+		space = new ServerSpace(this);
 	}
 
 	public void tick()
 	{
 		space.tick();
+		serverTick++;
 	}
 
 	@Override
@@ -48,7 +50,7 @@ public class Server extends UDPServer
 	{
 		System.out.println("Client connected " + client.getIp() + ":" + client.getPort() + " Total clients: " + getClientCount());
 		UUID uuid = UUID.randomUUID();
-		ServerPlayer player = new ServerPlayer(uuid, client);
+		ServerPlayer player = new ServerPlayer(this, uuid, client);
 		sendPacketToClient(new CSetUUID(uuid), client);
 		space.players.add(player);
 
@@ -59,10 +61,10 @@ public class Server extends UDPServer
 				continue;
 			}
 
-			sendPacketToClient(new CSpawn(CSpawn.Type.PLAYER, serverPlayer.position, serverPlayer.id), client);
+			sendPacketToClient(new CSpawn(CSpawn.Type.PLAYER, serverPlayer.position, 0xffffff, serverPlayer.rotation, serverPlayer.uuid), client);
 		}
 
-		sendPacketExcept(new CSpawn(CSpawn.Type.PLAYER, player.position, player.id), client);
+		sendPacketExcept(new CSpawn(CSpawn.Type.PLAYER, player.position, 0xffffff, player.rotation, player.uuid), client);
 	}
 
 	@Override

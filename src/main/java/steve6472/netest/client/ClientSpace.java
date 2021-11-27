@@ -13,7 +13,7 @@ import java.util.List;
  ***********************/
 public class ClientSpace
 {
-	public List<OtherPlayer> players = new ArrayList<>();
+	public List<ClientSpaceObject> objects = new ArrayList<>();
 
 	public void tick()
 	{
@@ -22,14 +22,9 @@ public class ClientSpace
 
 	public void render(Stack stack)
 	{
-		for (OtherPlayer player : players)
+		for (ClientSpaceObject obj : objects)
 		{
-			stack.pushMatrix();
-			stack.translate((float) player.position.x, 0, (float) player.position.y);
-			stack.rotateY(player.rotation);
-			Models.SHIP.render(stack);
-			Models.SHIP_COLORED.render(stack);
-			stack.popMatrix();
+			obj.render(stack);
 		}
 	}
 }

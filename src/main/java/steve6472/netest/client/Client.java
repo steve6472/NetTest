@@ -89,6 +89,7 @@ public class Client extends UDPClient
 	@Override
 	public void handlePacket(Packet<?> packet, DatagramPacket sender)
 	{
+		//TODO: push packets into BlockingList and at the end of each tick pull them all out and process them
 		System.out.println("Client got packet: " + packet);
 		if (packet instanceof CPacket sp)
 		{

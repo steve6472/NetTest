@@ -1,6 +1,5 @@
 package steve6472.netest.server;
 
-import org.joml.Vector2d;
 import steve6472.sge.main.networking.ConnectedClient;
 
 import java.util.UUID;
@@ -15,11 +14,10 @@ public class ServerPlayer extends ServerSpaceObject
 {
 	public final ConnectedClient client;
 
-	public ServerPlayer(UUID id, ConnectedClient client)
+	public ServerPlayer(Server server, UUID id, ConnectedClient client)
 	{
-		super(id);
+		super(server, id);
 		this.client = client;
-		position = new Vector2d();
 	}
 
 	@Override

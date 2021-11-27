@@ -91,6 +91,8 @@ public class Main extends MainApp
 			server.tick();
 		if (client != null)
 			client.tick();
+
+		tickCounter++;
 	}
 
 	@Override

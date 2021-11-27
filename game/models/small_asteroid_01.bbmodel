@@ -1,0 +1,118 @@
+{
+	"meta": {
+		"format_version": "4.0",
+		"creation_time": 1638045906,
+		"model_format": "free",
+		"box_uv": false
+	},
+	"name": "asteroid_01",
+	"geometry_name": "",
+	"visible_box": [1, 1, 0],
+	"variable_placeholders": "",
+	"resolution": {
+		"width": 16,
+		"height": 16
+	},
+	"elements": [
+		{
+			"name": "cube",
+			"color": 5,
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"visibility": true,
+			"locked": false,
+			"vertices": {
+				"n9Cw": [4, 7, 0],
+				"QcPZ": [2, 7, -2],
+				"HK7w": [2, 2, 3],
+				"PNde": [2, 3, 1],
+				"k2EU": [0, 8, 5],
+				"R4hs": [-2, 8, -2],
+				"hwHl": [-3, 4, 3],
+				"NEgX": [-5, 4, -1]
+			},
+			"faces": {
+				"SdCHJdZF": {
+					"uv": {
+						"n9Cw": [0, 0],
+						"HK7w": [0, 0],
+						"QcPZ": [0, 0],
+						"PNde": [0, 0]
+					},
+					"vertices": ["n9Cw", "HK7w", "QcPZ", "PNde"],
+					"texture": 0
+				},
+				"LgbkU19t": {
+					"uv": {
+						"k2EU": [0, 0],
+						"R4hs": [0, 0],
+						"hwHl": [0, 0],
+						"NEgX": [0, 0]
+					},
+					"vertices": ["k2EU", "R4hs", "hwHl", "NEgX"],
+					"texture": 0
+				},
+				"8WIuY2DF": {
+					"uv": {
+						"n9Cw": [0, 0],
+						"QcPZ": [0, 0],
+						"k2EU": [0, 0],
+						"R4hs": [0, 0]
+					},
+					"vertices": ["n9Cw", "QcPZ", "k2EU", "R4hs"],
+					"texture": 0
+				},
+				"l9tSZ5Sv": {
+					"uv": {
+						"HK7w": [0, 0],
+						"hwHl": [0, 0],
+						"PNde": [0, 0],
+						"NEgX": [0, 0]
+					},
+					"vertices": ["HK7w", "hwHl", "PNde", "NEgX"],
+					"texture": 0
+				},
+				"BrEPJETm": {
+					"uv": {
+						"n9Cw": [0, 0],
+						"k2EU": [0, 0],
+						"HK7w": [0, 0],
+						"hwHl": [0, 0]
+					},
+					"vertices": ["n9Cw", "k2EU", "HK7w", "hwHl"],
+					"texture": 0
+				},
+				"pO38FWHx": {
+					"uv": {
+						"QcPZ": [0, 0],
+						"PNde": [0, 0],
+						"R4hs": [0, 0],
+						"NEgX": [0, 0]
+					},
+					"vertices": ["QcPZ", "PNde", "R4hs", "NEgX"],
+					"texture": 0
+				}
+			},
+			"type": "mesh",
+			"uuid": "06e6b587-bb90-5d20-585a-964c6b6624cd"
+		}
+	],
+	"outliner": ["06e6b587-bb90-5d20-585a-964c6b6624cd"],
+	"textures": [
+		{
+			"path": "D:\\NetTest\\game\\textures\\white_pixel.png",
+			"name": "white_pixel.png",
+			"folder": "block",
+			"namespace": "",
+			"id": "0",
+			"particle": false,
+			"render_mode": "normal",
+			"visible": true,
+			"mode": "bitmap",
+			"saved": true,
+			"uuid": "1ff437e0-0583-58dc-6eed-dc02f3e58daf",
+			"relative_path": "../../textures/white_pixel.png",
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAB9JREFUOE9jZKAQMFKon2HUAIbRMGAYDQNQPhr4vAAAJpgAEX/anFwAAAAASUVORK5CYII="
+		}
+	]
+}

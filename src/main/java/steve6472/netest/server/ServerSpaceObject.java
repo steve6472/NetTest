@@ -13,9 +13,12 @@ import java.util.UUID;
  ***********************/
 public abstract class ServerSpaceObject extends SpaceObject
 {
-	public ServerSpaceObject(UUID id)
+	protected final Server server;
+
+	public ServerSpaceObject(Server server, UUID id)
 	{
 		super(id);
+		this.server = server;
 	}
 
 	@Override
