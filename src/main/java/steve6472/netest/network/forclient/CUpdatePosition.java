@@ -35,14 +35,22 @@ public class CUpdatePosition extends CPacket
 	@Override
 	public void handlePacket(Client client)
 	{
-		for (OtherPlayer player : client.space.players)
+		if (client.uuid.equals(uuid))
 		{
-			if (player.id.equals(uuid))
+			client.position = position;
+			client.rotation = rotation;
+		} else
+		{
+			for (OtherPlayer player : client.space.players)
 			{
-				player.position.set(position);
-				player.rotation = rotation;
+				if (player.uuid.equals(uuid))
+				{
+					player.position.set(position);
+					player.rotation = rotation;
+				}
 			}
 		}
+
 	}
 
 	@Override

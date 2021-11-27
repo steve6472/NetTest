@@ -3,6 +3,7 @@ package steve6472.netest.network.forserver;
 import org.joml.Vector2d;
 import steve6472.netest.network.SPacket;
 import steve6472.netest.network.forclient.CUpdatePosition;
+import steve6472.netest.server.ServerOptions;
 import steve6472.netest.server.ServerPlayer;
 import steve6472.netest.server.Server;
 import steve6472.sge.main.networking.ConnectedClient;
@@ -35,9 +36,16 @@ public class SUpdatePosition extends SPacket
 	{
 		ConnectedClient connectedClient = server.findConnectedClient(getSender());
 		ServerPlayer player = server.findPlayer(connectedClient);
-		player.position.set(position);
-		player.rotation = rotation;
-		server.sendPacketExcept(new CUpdatePosition(position, rotation, player.id), connectedClient);
+
+		if (player.position.distance(position) > ServerOptions.MAXIMUM_MOVE_DISTANCE)
+		{
+			server.sendPacketToClient(new CUpdatePosition(player.position, player.rotation, player.uuid), connectedClient);
+		} else
+		{
+			player.position.set(position);
+			player.rotation = rotation;
+			server.sendPacketExcept(new CUpdatePosition(position, rotation, player.uuid), connectedClient);
+		}
 	}
 
 	@Override
