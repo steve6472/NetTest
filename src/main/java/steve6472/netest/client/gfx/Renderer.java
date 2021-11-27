@@ -3,7 +3,6 @@ package steve6472.netest.client.gfx;
 import org.lwjgl.opengl.GL11;
 import steve6472.netest.Main;
 import steve6472.netest.client.Client;
-import steve6472.netest.client.Models;
 import steve6472.netest.client.gfx.particles.Emitter;
 import steve6472.sge.gfx.game.blockbench.model.BBModel;
 import steve6472.sge.gfx.game.blockbench.model.ModelRepository;
@@ -68,11 +67,6 @@ public class Renderer
 		stack.getTess(TriangleTess.class, "triangle").axisGizmo(0.5f, 0.05f, 0.1f);
 
 		// render here
-		// render client's ship
-		stack.pushMatrix().translate((float) client.position.x, 0, (float) client.position.y);
-		Models.SHIP.render(stack);
-		Models.SHIP_COLORED.render(stack);
-		stack.popMatrix();
 		client.render(stack);
 
 		Shaders.modelShader.bind(camera.getViewMatrix());

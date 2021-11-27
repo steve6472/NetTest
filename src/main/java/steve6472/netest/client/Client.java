@@ -6,7 +6,6 @@ import steve6472.netest.network.CPacket;
 import steve6472.netest.network.IClientHandler;
 import steve6472.netest.network.forserver.SUpdatePosition;
 import steve6472.sge.gfx.game.stack.Stack;
-import steve6472.sge.gfx.game.voxelizer.IModelAccessor;
 import steve6472.sge.main.KeyList;
 import steve6472.sge.main.networking.Packet;
 import steve6472.sge.main.networking.UDPClient;
@@ -29,8 +28,10 @@ public class Client extends UDPClient
 	public UUID uuid;
 	public Vector2d position = new Vector2d();
 	public Vector2d motion = new Vector2d();
-	public Vector2d acceleration = new Vector2d();
 	public Vector2d lastPos = new Vector2d();
+
+	public float rotation;
+	public float rotationMot;
 
 	/**
 	 * @param ip   Client is gonna connect to this IP
@@ -48,19 +49,33 @@ public class Client extends UDPClient
 	public void render(Stack stack)
 	{
 		space.render(stack);
+
+		stack.pushMatrix();
+		stack.translate((float) position.x, 0, (float) position.y);
+		stack.rotateY(rotation);
+		Models.SHIP.render(stack);
+		Models.SHIP_COLORED.render(stack);
+		stack.popMatrix();
 	}
 
 	public void tick()
 	{
-		acceleration.set(0);
-		if (main.isKeyPressed(KeyList.W)) acceleration.y--;
-		if (main.isKeyPressed(KeyList.S)) acceleration.y++;
-		if (main.isKeyPressed(KeyList.A)) acceleration.x--;
-		if (main.isKeyPressed(KeyList.D)) acceleration.x++;
+		float acceleration = 0;
+		if (main.isKeyPressed(KeyList.W)) acceleration--;
+		if (main.isKeyPressed(KeyList.S)) acceleration++;
 
-		motion.add(acceleration.div(60));
+		acceleration /= 60f;
+		motion.add(acceleration * Math.sin(rotation), acceleration * Math.cos(rotation));
 		position.add(motion);
 		motion.mul(0.9);
+
+		float rotAcceleration = 0;
+		if (main.isKeyPressed(KeyList.A)) rotAcceleration++;
+		if (main.isKeyPressed(KeyList.D)) rotAcceleration--;
+
+		rotationMot += rotAcceleration / 60;
+		rotation += rotationMot;
+		rotationMot *= 0.8;
 
 		if (!lastPos.equals(position))
 		{
