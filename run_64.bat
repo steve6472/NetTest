@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\Minecraft\runtime\java-runtime-alpha\windows-x64\java-runtime-alpha\bin\javaw.exe" -jar NetTest.jar

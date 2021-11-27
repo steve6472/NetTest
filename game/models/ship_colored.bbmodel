@@ -1,0 +1,242 @@
+{
+	"meta": {
+		"format_version": "4.0",
+		"creation_time": 1638029780,
+		"model_format": "free",
+		"box_uv": false
+	},
+	"name": "ship",
+	"geometry_name": "",
+	"visible_box": [1, 1, 0],
+	"variable_placeholders": "",
+	"resolution": {
+		"width": 64,
+		"height": 64
+	},
+	"elements": [
+		{
+			"name": "cube",
+			"rescale": false,
+			"locked": false,
+			"collision": false,
+			"hitbox": false,
+			"from": [-1.5, 6, -8],
+			"to": [1.5, 11, -6],
+			"autouv": 0,
+			"color": 3,
+			"rotation": [50, 0, 0],
+			"origin": [0, 6, -8],
+			"faces": {
+				"north": {
+					"uv": [6, 13, 9, 18],
+					"layer": "normal",
+					"disable_other_cull": false,
+					"texture": 0
+				},
+				"east": {
+					"uv": [0, 0, 0, 0],
+					"layer": "normal",
+					"disable_other_cull": false,
+					"texture": null
+				},
+				"south": {
+					"uv": [0, 0, 0, 0],
+					"layer": "normal",
+					"disable_other_cull": false,
+					"texture": null
+				},
+				"west": {
+					"uv": [0, 0, 0, 0],
+					"layer": "normal",
+					"disable_other_cull": false,
+					"texture": null
+				},
+				"up": {
+					"uv": [0, 0, 0, 0],
+					"layer": "normal",
+					"disable_other_cull": false,
+					"texture": null
+				},
+				"down": {
+					"uv": [0, 0, 0, 0],
+					"layer": "normal",
+					"disable_other_cull": false,
+					"texture": null
+				}
+			},
+			"uuid": "42e0ff46-0974-8123-eb34-4a7d58e21cfa"
+		},
+		{
+			"name": "cube",
+			"rescale": false,
+			"locked": false,
+			"collision": false,
+			"hitbox": false,
+			"from": [2.25, 5.85, -9],
+			"to": [2.75, 6.35, -5],
+			"autouv": 0,
+			"color": 0,
+			"origin": [2, 1, -5],
+			"faces": {
+				"north": {
+					"uv": [18, 28, 19, 29],
+					"layer": "normal",
+					"disable_other_cull": false,
+					"texture": 0
+				},
+				"east": {
+					"uv": [20, 27, 24, 28],
+					"layer": "normal",
+					"disable_other_cull": false,
+					"texture": 0
+				},
+				"south": {
+					"uv": [0, 0, 0, 0],
+					"layer": "normal",
+					"disable_other_cull": false,
+					"texture": null
+				},
+				"west": {
+					"uv": [24, 27, 28, 28],
+					"layer": "normal",
+					"disable_other_cull": false,
+					"texture": 0
+				},
+				"up": {
+					"uv": [13, 31, 12, 27],
+					"layer": "normal",
+					"disable_other_cull": false,
+					"texture": 0
+				},
+				"down": {
+					"uv": [14, 27, 13, 31],
+					"layer": "normal",
+					"disable_other_cull": false,
+					"texture": 0
+				}
+			},
+			"uuid": "c68eb678-8ef0-1217-b788-a0537895be0d"
+		},
+		{
+			"name": "cube",
+			"rescale": false,
+			"locked": false,
+			"collision": false,
+			"hitbox": false,
+			"from": [-2.75, 5.85, -9],
+			"to": [-2.25, 6.35, -5],
+			"autouv": 0,
+			"color": 1,
+			"origin": [-2, 1, -5],
+			"faces": {
+				"north": {
+					"uv": [16, 28, 17, 29],
+					"layer": "normal",
+					"disable_other_cull": false,
+					"texture": 0
+				},
+				"east": {
+					"uv": [26, 13, 30, 14],
+					"layer": "normal",
+					"disable_other_cull": false,
+					"texture": 0
+				},
+				"south": {
+					"uv": [0, 0, 0, 0],
+					"layer": "normal",
+					"disable_other_cull": false,
+					"texture": null
+				},
+				"west": {
+					"uv": [26, 14, 30, 15],
+					"layer": "normal",
+					"disable_other_cull": false,
+					"texture": 0
+				},
+				"up": {
+					"uv": [16, 30, 15, 26],
+					"layer": "normal",
+					"disable_other_cull": false,
+					"texture": 0
+				},
+				"down": {
+					"uv": [12, 27, 11, 31],
+					"layer": "normal",
+					"disable_other_cull": false,
+					"texture": 0
+				}
+			},
+			"uuid": "c79e8529-3793-bb72-c528-0e5c839d3f1a"
+		}
+	],
+	"outliner": [
+		"42e0ff46-0974-8123-eb34-4a7d58e21cfa",
+		{
+			"name": "wing",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"uuid": "a504d001-d3af-3ada-258c-b55291601553",
+			"export": true,
+			"isOpen": true,
+			"locked": false,
+			"visibility": true,
+			"autouv": 0,
+			"children": [
+				{
+					"name": "gun",
+					"origin": [0, 0, 0],
+					"color": 0,
+					"uuid": "08b7ebe1-1f86-36d2-cfb3-968991f16286",
+					"export": true,
+					"isOpen": true,
+					"locked": false,
+					"visibility": true,
+					"autouv": 0,
+					"children": ["c68eb678-8ef0-1217-b788-a0537895be0d"]
+				}
+			]
+		},
+		{
+			"name": "wing2",
+			"origin": [0, 0, 0],
+			"color": 1,
+			"uuid": "c6d04bef-7736-de27-ccf5-b078db7701d2",
+			"export": true,
+			"isOpen": true,
+			"locked": false,
+			"visibility": true,
+			"autouv": 0,
+			"children": [
+				{
+					"name": "gun2",
+					"origin": [0, 0, 0],
+					"color": 1,
+					"uuid": "7c8dec9e-8a96-09b0-81e6-2c74965cef47",
+					"export": true,
+					"isOpen": true,
+					"locked": false,
+					"visibility": true,
+					"autouv": 0,
+					"children": ["c79e8529-3793-bb72-c528-0e5c839d3f1a"]
+				}
+			]
+		}
+	],
+	"textures": [
+		{
+			"path": "D:\\NetTest\\game\\textures\\ship.png",
+			"name": "ship.png",
+			"folder": "block",
+			"namespace": "",
+			"id": "0",
+			"particle": false,
+			"render_mode": "normal",
+			"visible": true,
+			"mode": "bitmap",
+			"saved": false,
+			"uuid": "89653f84-1d83-0618-52a6-e277997d0bb0",
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAyBJREFUeF7tmUtoFEEQhmsOonhbUDb4OMwGNbkkZ08rBiSCCD5uQg4+QKNEEDZqwJMnXQ2IMQZ8k6siaEDxZHydvCQoosIuIfiYgydB8LRSQ3rodKZ7eobS7Yrdl52ZrWmqvvq7+jHBjv6dLUhpe/bth7ASQrPRhIcP7i+yKJfLEEVR8qy3p2fR/6VSCUpr1sKbVy9jO2Fv+p28dzdI8+NvPwuKAECnRDDbqtVUHxEAgrMJHiE9e/rELQBj4+PQaDahEoZwYnAwVQGoElNTlWOydQ4ABnf08EGYuHl7yRAQCjgwMGAEMFqvWyvYSQC2NUA3DJ5PTy9PADY1AG1YA7CpAbrMi7TrALRL7mlyNM4CWTWgu6vLKHH2AGxrgPVAXzBkowAdALkG5A0e7VkAsKkBRYJnAyBrHVA0eFYATEMgLwB1xhg5e6YtS1/Vb+0s8LZzJLYNe7fC677h5L3dxz/kjT22l8f91Op1rV2/vroPYEW5AzZ0hDGAleu3wO8vH6EogKEXM+BK0HIGjQqgBKDKxpWZ4J8DeHStG1Z1jjohf0yKFsCPvY+TpFHUAFkBrmTfCEA4jAca2OQToEJVcOElNgpQV3vqMVhRCC5l30oBpkDFiVDj8ycQ54B4/T2KADdKeCym3h87csiZ8U8GQEDCYCubNsdB46/6HO/ZAMg670tTBoczQOuV4H8D4PqNW6nfBQQp3A+YWtbB56lazfh+f9/2ttaEIAtAlqyHLk0kAd65fDW5/vntfXItb4Rc2QQJ55YshPArjyhgWMxmZme1GcQpberdXKKgZQNABI0wZADyHI7KwYqufllSd31Iz8VNkFYBarrlYihPYbXh0636xQsBbm3nr5yHjSfPOR2oTsaZBQgDFS9jwOIan1fHJlkGLcPIBQADFs1lWedZpmcCyNMZR1sPgGPWKH32CqCkybEvrwCOWaP02SuAkibHvrwCOGaN0mevAEqaHPvyCuCYNUqfvQIoaXLsyyuAY9YoffYKoKTJsS+vAI5Zo/TZK4CSJse+vAI4Zo3SZ68ASpoc+/IK4Jg1Sp+9AihpcuzrD8zGq1AyjShjAAAAAElFTkSuQmCC",
+			"relative_path": "../../textures/ship.png"
+		}
+	]
+}
