@@ -8,6 +8,7 @@ import steve6472.netest.client.gui.InGameGui;
 import steve6472.netest.client.gui.MainMenu;
 import steve6472.netest.network.forclient.*;
 import steve6472.netest.network.forserver.SPong;
+import steve6472.netest.network.forserver.SSetColor;
 import steve6472.netest.network.forserver.SUpdatePosition;
 import steve6472.netest.server.Server;
 import steve6472.sge.main.MainApp;
@@ -65,9 +66,11 @@ public class Main extends MainApp
 		Packets.registerPacket(CPing::new);
 		Packets.registerPacket(CUpdatePing::new);
 		Packets.registerPacket(CRemove::new);
+		Packets.registerPacket(CSetColor::new);
 
 		Packets.registerPacket(SUpdatePosition::new);
 		Packets.registerPacket(SPong::new);
+		Packets.registerPacket(SSetColor::new);
 	}
 
 	public Renderer getRenderer()

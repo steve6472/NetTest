@@ -6,6 +6,7 @@ import steve6472.netest.network.CPacket;
 import steve6472.netest.network.IClientHandler;
 import steve6472.netest.network.forserver.SUpdatePosition;
 import steve6472.sge.gfx.game.stack.Stack;
+import steve6472.sge.gfx.game.stack.tess.BBTess;
 import steve6472.sge.main.KeyList;
 import steve6472.sge.main.networking.Packet;
 import steve6472.sge.main.networking.UDPClient;
@@ -39,6 +40,7 @@ public class Client extends UDPClient
 	public Vector2d position = new Vector2d();
 	public Vector2d motion = new Vector2d();
 	public Vector2d lastPos = new Vector2d();
+	public int color;
 
 	public float rotation;
 	public float rotationMot;
@@ -65,7 +67,10 @@ public class Client extends UDPClient
 		stack.pushMatrix();
 		stack.translate((float) position.x, 0, (float) position.y);
 		stack.rotateY(rotation);
+		BBTess blockbench = stack.getTess(BBTess.class, "blockbench");
+		blockbench.color(color);
 		Models.SHIP.render(stack);
+		blockbench.color(0xffffffff);
 		Models.SHIP_COLORED.render(stack);
 		stack.popMatrix();
 	}

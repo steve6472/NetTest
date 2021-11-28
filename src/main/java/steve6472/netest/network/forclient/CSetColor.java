@@ -1,6 +1,8 @@
 package steve6472.netest.network.forclient;
 
 import steve6472.netest.client.Client;
+import steve6472.netest.client.ClientSpaceObject;
+import steve6472.netest.client.OtherPlayer;
 import steve6472.netest.network.CPacket;
 import steve6472.sge.main.networking.PacketData;
 
@@ -12,35 +14,45 @@ import java.util.UUID;
  * Project: NetTest
  *
  ***********************/
-public class CRemove extends CPacket
+public class CSetColor extends CPacket
 {
-	private UUID uuid;
+	UUID uuid;
+	int color;
 
-	public CRemove(UUID uuid)
+	public CSetColor(int color, UUID uuid)
 	{
+		this.color = color;
 		this.uuid = uuid;
 	}
 
-	public CRemove()
+	public CSetColor()
 	{
-
 	}
 
 	@Override
 	public void handlePacket(Client client)
 	{
-		client.space.objects.remove(uuid);
+		ClientSpaceObject object = client.space.getObject(uuid);
+		if (!(object instanceof OtherPlayer player))
+		{
+			throw new IllegalStateException("ClientSpaceObject with uuid '" + uuid + "' is not Player!");
+		} else
+		{
+			player.color = color;
+		}
 	}
 
 	@Override
 	public void output(PacketData output)
 	{
+		output.writeInt(color);
 		output.writeUUID(uuid);
 	}
 
 	@Override
 	public void input(PacketData input)
 	{
+		color = input.readInt();
 		uuid = input.readUUID();
 	}
 }

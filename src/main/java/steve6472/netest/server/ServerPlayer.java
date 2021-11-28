@@ -19,6 +19,7 @@ public class ServerPlayer extends ServerSpaceObject
 	public long pingSent;
 	public int pingNotReceivedCount;
 	public boolean shouldBeRemoved = false;
+	public int color;
 
 	public ServerPlayer(Server server, UUID id, ConnectedClient client)
 	{

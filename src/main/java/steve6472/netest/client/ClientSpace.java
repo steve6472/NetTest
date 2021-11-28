@@ -2,8 +2,9 @@ package steve6472.netest.client;
 
 import steve6472.sge.gfx.game.stack.Stack;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 /**********************
  * Created by steve6472 (Mirek Jozefek)
@@ -13,7 +14,7 @@ import java.util.List;
  ***********************/
 public class ClientSpace
 {
-	public List<ClientSpaceObject> objects = new ArrayList<>();
+	public Map<UUID, ClientSpaceObject> objects = new HashMap<>();
 
 	public void tick()
 	{
@@ -22,9 +23,11 @@ public class ClientSpace
 
 	public void render(Stack stack)
 	{
-		for (ClientSpaceObject obj : objects)
-		{
-			obj.render(stack);
-		}
+		objects.forEach((u, o) -> o.render(stack));
+	}
+
+	public ClientSpaceObject getObject(UUID uuid)
+	{
+		return objects.get(uuid);
 	}
 }

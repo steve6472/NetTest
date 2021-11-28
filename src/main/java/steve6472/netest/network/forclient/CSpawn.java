@@ -54,13 +54,14 @@ public class CSpawn extends CPacket
 			OtherPlayer e = new OtherPlayer(uuid);
 			e.position.set(x, y);
 			e.rotation = rotation;
-			client.space.objects.add(e);
+			e.color = variant;
+			client.space.objects.put(uuid, e);
 		} else if (type == Type.SMALL_ASTEROID)
 		{
 			DestructableObject d = new DestructableObject(uuid, Models.SMALL_ASTEROIDS[variant]);
 			d.position.set(x, y);
 			d.rotation = rotation;
-			client.space.objects.add(d);
+			client.space.objects.put(uuid, d);
 		}
 	}
 

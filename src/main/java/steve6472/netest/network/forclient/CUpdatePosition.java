@@ -1,8 +1,8 @@
 package steve6472.netest.network.forclient;
 
 import org.joml.Vector2d;
-import steve6472.netest.SpaceObject;
 import steve6472.netest.client.Client;
+import steve6472.netest.client.ClientSpaceObject;
 import steve6472.netest.network.CPacket;
 import steve6472.sge.main.networking.PacketData;
 
@@ -41,14 +41,10 @@ public class CUpdatePosition extends CPacket
 			client.rotation = rotation;
 		} else
 		{
-			for (SpaceObject objects : client.space.objects)
-			{
-				if (objects.uuid.equals(uuid))
-				{
-					objects.position.set(position);
-					objects.rotation = rotation;
-				}
-			}
+			ClientSpaceObject object = client.space.getObject(uuid);
+
+			object.position.set(position);
+			object.rotation = rotation;
 		}
 
 	}

@@ -61,10 +61,10 @@ public class Server extends UDPServer
 				continue;
 			}
 
-			sendPacketToClient(new CSpawn(CSpawn.Type.PLAYER, serverPlayer.position, 0xffffff, serverPlayer.rotation, serverPlayer.uuid), client);
+			sendPacketToClient(new CSpawn(CSpawn.Type.PLAYER, serverPlayer.position, serverPlayer.color, serverPlayer.rotation, serverPlayer.uuid), client);
 		}
 
-		sendPacketExcept(new CSpawn(CSpawn.Type.PLAYER, player.position, 0xffffff, player.rotation, player.uuid), client);
+		sendPacketExcept(new CSpawn(CSpawn.Type.PLAYER, player.position, player.color, player.rotation, player.uuid), client);
 	}
 
 	@Override
