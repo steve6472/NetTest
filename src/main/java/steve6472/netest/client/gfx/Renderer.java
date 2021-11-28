@@ -53,7 +53,7 @@ public class Renderer
 		camera.setPosition((float) client.position.x, 0, (float) client.position.y);
 		camera.setPitch((float) (Math.PI / -2f));
 		camera.setYaw(0);
-		camera.calculateOrbit(8);
+		camera.calculateOrbit(6 + (float) client.lastSpeed * 16f);
 
 		glViewport(0, 0, main.getWidth(), main.getHeight());
 

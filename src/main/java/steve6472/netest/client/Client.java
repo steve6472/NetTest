@@ -36,6 +36,7 @@ public class Client extends UDPClient
 
 	public float rotation;
 	public float rotationMot;
+	public double lastSpeed;
 
 	/**
 	 * @param ip   Client is gonna connect to this IP
@@ -73,6 +74,7 @@ public class Client extends UDPClient
 
 		acceleration /= 60f;
 		motion.add(acceleration * Math.sin(rotation), acceleration * Math.cos(rotation));
+		lastSpeed = position.distance(position.x + motion.x, position.y + motion.y);
 		position.add(motion);
 		motion.mul(0.9);
 
@@ -97,7 +99,7 @@ public class Client extends UDPClient
 	{
 		while (!packetQueue.isEmpty())
 		{
-			Pair<Packet<?>, DatagramPacket> packetPair = null;
+			Pair<Packet<?>, DatagramPacket> packetPair;
 			try
 			{
 				packetPair = packetQueue.take();
@@ -121,7 +123,6 @@ public class Client extends UDPClient
 	@Override
 	public void handlePacket(Packet<?> packet, DatagramPacket sender)
 	{
-		//TODO: push packets into BlockingList and at the end of each tick pull them all out and process them
 		System.out.println("Client got packet: " + packet);
 		try
 		{
