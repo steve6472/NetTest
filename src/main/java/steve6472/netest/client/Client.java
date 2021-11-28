@@ -39,12 +39,16 @@ public class Client extends UDPClient
 	public UUID uuid;
 	public Vector2d position = new Vector2d();
 	public Vector2d motion = new Vector2d();
-	public Vector2d lastPos = new Vector2d();
+
+	private float lastSentRotation;
+	private Vector2d lastSentPosition = new Vector2d();
 	public int color;
 
 	public float rotation;
 	public float rotationMot;
 	public double lastSpeed;
+
+	public long lastShot;
 
 	/**
 	 * @param ip   Client is gonna connect to this IP
@@ -79,6 +83,13 @@ public class Client extends UDPClient
 	{
 		handlePackets();
 
+		move();
+
+
+	}
+
+	private void move()
+	{
 		float acceleration = 0;
 		if (main.isKeyPressed(KeyList.W)) acceleration--;
 		if (main.isKeyPressed(KeyList.S)) acceleration++;
@@ -99,9 +110,10 @@ public class Client extends UDPClient
 
 		rotation = (float) (rotation % (Math.PI * 2f));
 
-		if (!lastPos.equals(position))
+		if (lastSentPosition.distance(position) > ClientOptions.DISTANCE_TO_SEND || Math.abs(lastSentRotation - rotation) > ClientOptions.ROTATION_TO_SEND)
 		{
-			lastPos.set(position);
+			lastSentPosition.set(position);
+			lastSentRotation = rotation;
 			sendPacket(new SUpdatePosition(position, rotation));
 		}
 	}
