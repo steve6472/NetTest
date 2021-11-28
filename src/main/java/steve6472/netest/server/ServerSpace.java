@@ -5,9 +5,7 @@ import steve6472.netest.ISaveable;
 import steve6472.netest.network.forclient.CSpawn;
 import steve6472.netest.server.objects.SmallAsteroid;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**********************
  * Created by steve6472 (Mirek Jozefek)
@@ -19,8 +17,8 @@ public class ServerSpace implements ISaveable
 {
 	private final Server server;
 
-	List<ServerPlayer> players = new ArrayList<>();
-	List<ServerSpaceObject> objects = new ArrayList<>();
+	public List<ServerPlayer> players = new ArrayList<>();
+	public Map<UUID, ServerSpaceObject> objects = new HashMap<>();
 
 	public ServerSpace(Server server)
 	{
@@ -38,10 +36,7 @@ public class ServerSpace implements ISaveable
 				player.tick();
 		}
 
-		for (ServerSpaceObject object : objects)
-		{
-			object.tick();
-		}
+		objects.forEach((u, o) -> o.tick());
 
 		if (server.serverTick == 10)
 		{
@@ -63,7 +58,7 @@ public class ServerSpace implements ISaveable
 		asteroid.position.set(x, y);
 		asteroid.rotation = rotation;
 		asteroid.variant = variant;
-		objects.add(asteroid);
+		objects.put(asteroid.uuid, asteroid);
 		server.sendPacket(new CSpawn(CSpawn.Type.SMALL_ASTEROID, asteroid.position, variant, asteroid.rotation, asteroid.uuid));
 	}
 

@@ -1,5 +1,6 @@
-package steve6472.netest.client;
+package steve6472.netest.client.objects;
 
+import steve6472.netest.client.ClientSpaceObject;
 import steve6472.sge.gfx.game.blockbench.model.BBModel;
 import steve6472.sge.gfx.game.stack.Stack;
 import steve6472.sge.main.util.RandomUtil;

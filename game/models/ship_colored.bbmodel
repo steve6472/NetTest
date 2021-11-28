@@ -1,7 +1,7 @@
 {
 	"meta": {
 		"format_version": "4.0",
-		"creation_time": 1638029780,
+		"creation_time": 1638103918,
 		"model_format": "free",
 		"box_uv": false
 	},
@@ -224,8 +224,8 @@
 	],
 	"textures": [
 		{
-			"path": "D:\\NetTest\\game\\textures\\ship.png",
-			"name": "ship.png",
+			"path": "D:\\NetTest\\game\\textures\\ship_colored.png",
+			"name": "ship_colored.png",
 			"folder": "block",
 			"namespace": "",
 			"id": "0",
@@ -233,10 +233,10 @@
 			"render_mode": "normal",
 			"visible": true,
 			"mode": "bitmap",
-			"saved": false,
+			"saved": true,
 			"uuid": "89653f84-1d83-0618-52a6-e277997d0bb0",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAyBJREFUeF7tmUtoFEEQhmsOonhbUDb4OMwGNbkkZ08rBiSCCD5uQg4+QKNEEDZqwJMnXQ2IMQZ8k6siaEDxZHydvCQoosIuIfiYgydB8LRSQ3rodKZ7eobS7Yrdl52ZrWmqvvq7+jHBjv6dLUhpe/bth7ASQrPRhIcP7i+yKJfLEEVR8qy3p2fR/6VSCUpr1sKbVy9jO2Fv+p28dzdI8+NvPwuKAECnRDDbqtVUHxEAgrMJHiE9e/rELQBj4+PQaDahEoZwYnAwVQGoElNTlWOydQ4ABnf08EGYuHl7yRAQCjgwMGAEMFqvWyvYSQC2NUA3DJ5PTy9PADY1AG1YA7CpAbrMi7TrALRL7mlyNM4CWTWgu6vLKHH2AGxrgPVAXzBkowAdALkG5A0e7VkAsKkBRYJnAyBrHVA0eFYATEMgLwB1xhg5e6YtS1/Vb+0s8LZzJLYNe7fC677h5L3dxz/kjT22l8f91Op1rV2/vroPYEW5AzZ0hDGAleu3wO8vH6EogKEXM+BK0HIGjQqgBKDKxpWZ4J8DeHStG1Z1jjohf0yKFsCPvY+TpFHUAFkBrmTfCEA4jAca2OQToEJVcOElNgpQV3vqMVhRCC5l30oBpkDFiVDj8ycQ54B4/T2KADdKeCym3h87csiZ8U8GQEDCYCubNsdB46/6HO/ZAMg670tTBoczQOuV4H8D4PqNW6nfBQQp3A+YWtbB56lazfh+f9/2ttaEIAtAlqyHLk0kAd65fDW5/vntfXItb4Rc2QQJ55YshPArjyhgWMxmZme1GcQpberdXKKgZQNABI0wZADyHI7KwYqufllSd31Iz8VNkFYBarrlYihPYbXh0636xQsBbm3nr5yHjSfPOR2oTsaZBQgDFS9jwOIan1fHJlkGLcPIBQADFs1lWedZpmcCyNMZR1sPgGPWKH32CqCkybEvrwCOWaP02SuAkibHvrwCOGaN0mevAEqaHPvyCuCYNUqfvQIoaXLsyyuAY9YoffYKoKTJsS+vAI5Zo/TZK4CSJse+vAI4Zo3SZ68ASpoc+/IK4Jg1Sp+9AihpcuzrD8zGq1AyjShjAAAAAElFTkSuQmCC",
-			"relative_path": "../../textures/ship.png"
+			"relative_path": "../../textures/ship_colored.png",
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAyBJREFUeF7tmUtoFEEQhmsOonhbUDb4OMwGNbkkZ08rBiSCCD5uQg4+QKNEEDZqwJMnXQ2IMQZ8k6siaEDxZHydvCQoosIuIfiYgydB8LRSQ3rodKZ7eobS7Yrdl52ZrWmqvvq7+jHBjv6dLUhpe/bth7ASQrPRhIcP7i+yKJfLEEVR8qy3p2fR/6VSCUpr1sKbVy9jO2Fv+p28dzdI8+NvPwuKAECnRDDbqtVUHxEAgrMJHiE9e/rELQBj4+PQaDahEoZwYnAwVQGoElNTlWOydQ4ABnf08EGYuHl7yRAQCjgwMGAEMFqvWyvYSQC2NUA3DJ5PTy9PADY1AG1YA7CpAbrMi7TrALRL7mlyNM4CWTWgu6vLKHH2AGxrgPVAXzBkowAdALkG5A0e7VkAsKkBRYJnAyBrHVA0eFYATEMgLwB1xhg5e6YtS1/Vb+0s8LZzJLYNe7fC677h5L3dxz/kjT22l8f91Op1rV2/vroPYEW5AzZ0hDGAleu3wO8vH6EogKEXM+BK0HIGjQqgBKDKxpWZ4J8DeHStG1Z1jjohf0yKFsCPvY+TpFHUAFkBrmTfCEA4jAca2OQToEJVcOElNgpQV3vqMVhRCC5l30oBpkDFiVDj8ycQ54B4/T2KADdKeCym3h87csiZ8U8GQEDCYCubNsdB46/6HO/ZAMg670tTBoczQOuV4H8D4PqNW6nfBQQp3A+YWtbB56lazfh+f9/2ttaEIAtAlqyHLk0kAd65fDW5/vntfXItb4Rc2QQJ55YshPArjyhgWMxmZme1GcQpberdXKKgZQNABI0wZADyHI7KwYqufllSd31Iz8VNkFYBarrlYihPYbXh0636xQsBbm3nr5yHjSfPOR2oTsaZBQgDFS9jwOIan1fHJlkGLcPIBQADFs1lWedZpmcCyNMZR1sPgGPWKH32CqCkybEvrwCOWaP02SuAkibHvrwCOGaN0mevAEqaHPvyCuCYNUqfvQIoaXLsyyuAY9YoffYKoKTJsS+vAI5Zo/TZK4CSJse+vAI4Zo3SZ68ASpoc+/IK4Jg1Sp+9AihpcuzrD8zGq1AyjShjAAAAAElFTkSuQmCC"
 		}
 	]
 }

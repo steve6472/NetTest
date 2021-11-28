@@ -19,7 +19,7 @@ import java.util.UUID;
  ***********************/
 public class Server extends UDPServer
 {
-	ServerSpace space;
+	public ServerSpace space;
 	public long serverTick;
 
 	//36210

@@ -4,6 +4,7 @@ import org.joml.Vector2d;
 import steve6472.netest.Main;
 import steve6472.netest.network.CPacket;
 import steve6472.netest.network.IClientHandler;
+import steve6472.netest.network.forserver.SShootProjectile;
 import steve6472.netest.network.forserver.SUpdatePosition;
 import steve6472.sge.gfx.game.stack.Stack;
 import steve6472.sge.gfx.game.stack.tess.BBTess;
@@ -48,6 +49,7 @@ public class Client extends UDPClient
 	public float rotationMot;
 	public double lastSpeed;
 
+	public long maxShootDelay = 1_000_000_000;
 	public long lastShot;
 
 	/**
@@ -82,10 +84,21 @@ public class Client extends UDPClient
 	public void tick()
 	{
 		handlePackets();
-
 		move();
+		tickShooting();
+	}
 
+	private void tickShooting()
+	{
+		if (!main.isKeyPressed(KeyList.SPACE))
+			return;
 
+		long now = System.nanoTime();
+		if (now - lastShot >= maxShootDelay)
+		{
+			lastShot = now;
+			sendPacket(new SShootProjectile(0, rotation));
+		}
 	}
 
 	private void move()

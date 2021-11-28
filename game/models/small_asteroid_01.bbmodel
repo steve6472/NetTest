@@ -1,7 +1,7 @@
 {
 	"meta": {
 		"format_version": "4.0",
-		"creation_time": 1638045906,
+		"creation_time": 1638103962,
 		"model_format": "free",
 		"box_uv": false
 	},
@@ -22,14 +22,14 @@
 			"visibility": true,
 			"locked": false,
 			"vertices": {
-				"n9Cw": [4, 7, 0],
-				"QcPZ": [2, 7, -2],
-				"HK7w": [2, 2, 3],
-				"PNde": [2, 3, 1],
-				"k2EU": [0, 8, 5],
-				"R4hs": [-2, 8, -2],
-				"hwHl": [-3, 4, 3],
-				"NEgX": [-5, 4, -1]
+				"n9Cw": [5, 10, -1],
+				"QcPZ": [3, 10, -3],
+				"HK7w": [3, 5, 2],
+				"PNde": [3, 6, 0],
+				"k2EU": [1, 11, 4],
+				"R4hs": [-1, 11, -3],
+				"hwHl": [-2, 7, 2],
+				"NEgX": [-4, 7, -2]
 			},
 			"faces": {
 				"SdCHJdZF": {
@@ -112,7 +112,7 @@
 			"saved": true,
 			"uuid": "1ff437e0-0583-58dc-6eed-dc02f3e58daf",
 			"relative_path": "../../textures/white_pixel.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAB9JREFUOE9jZKAQMFKon2HUAIbRMGAYDQNQPhr4vAAAJpgAEX/anFwAAAAASUVORK5CYII="
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAB5JREFUOE9j/P///38GCgDjqAEMo2HAMBoGDMMiDAAlHz/RG+BMbgAAAABJRU5ErkJggg=="
 		}
 	]
 }

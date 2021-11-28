@@ -2,7 +2,7 @@ package steve6472.netest.network.forclient;
 
 import steve6472.netest.client.Client;
 import steve6472.netest.client.ClientSpaceObject;
-import steve6472.netest.client.OtherPlayer;
+import steve6472.netest.client.objects.OtherPlayer;
 import steve6472.netest.network.CPacket;
 import steve6472.sge.main.networking.PacketData;
 

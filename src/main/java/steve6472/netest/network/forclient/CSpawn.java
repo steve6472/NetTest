@@ -2,9 +2,10 @@ package steve6472.netest.network.forclient;
 
 import org.joml.Vector2d;
 import steve6472.netest.client.Client;
-import steve6472.netest.client.DestructableObject;
 import steve6472.netest.client.Models;
-import steve6472.netest.client.OtherPlayer;
+import steve6472.netest.client.objects.DestructableObject;
+import steve6472.netest.client.objects.OtherPlayer;
+import steve6472.netest.client.objects.Projectile;
 import steve6472.netest.network.CPacket;
 import steve6472.sge.main.networking.PacketData;
 
@@ -62,6 +63,12 @@ public class CSpawn extends CPacket
 			d.position.set(x, y);
 			d.rotation = rotation;
 			client.space.objects.put(uuid, d);
+		} else if (type == Type.PROJECTILE)
+		{
+			Projectile p = new Projectile(uuid, Models.PROJECTILE);
+			p.position.set(x, y);
+			p.rotation = rotation;
+			client.space.objects.put(uuid, p);
 		}
 	}
 
@@ -89,7 +96,7 @@ public class CSpawn extends CPacket
 
 	public enum Type
 	{
-		PLAYER, SMALL_ASTEROID
+		PLAYER, SMALL_ASTEROID, PROJECTILE
 	}
 
 	@Override

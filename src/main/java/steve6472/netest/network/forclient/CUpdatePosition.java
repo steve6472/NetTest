@@ -42,6 +42,8 @@ public class CUpdatePosition extends CPacket
 		} else
 		{
 			ClientSpaceObject object = client.space.getObject(uuid);
+			if (object == null)
+				return;
 
 			object.position.set(position);
 			object.rotation = rotation;

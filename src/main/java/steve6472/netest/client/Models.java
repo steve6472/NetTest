@@ -13,6 +13,7 @@ public class Models
 {
 	public static final BBModel SHIP = Renderer.addModel("ship");
 	public static final BBModel SHIP_COLORED = Renderer.addModel("ship_colored");
+	public static final BBModel PROJECTILE = Renderer.addModel("projectile");
 
 	// Asteroids
 	public static final BBModel SMALL_ASTEROID_01 = Renderer.addModel("small_asteroid_01");
