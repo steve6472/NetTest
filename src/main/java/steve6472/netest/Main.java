@@ -7,10 +7,7 @@ import steve6472.netest.client.gfx.Shaders;
 import steve6472.netest.client.gui.InGameGui;
 import steve6472.netest.client.gui.MainMenu;
 import steve6472.netest.network.forclient.*;
-import steve6472.netest.network.forserver.SPong;
-import steve6472.netest.network.forserver.SSetColor;
-import steve6472.netest.network.forserver.SShootProjectile;
-import steve6472.netest.network.forserver.SUpdatePosition;
+import steve6472.netest.network.forserver.*;
 import steve6472.netest.server.Server;
 import steve6472.sge.main.MainApp;
 import steve6472.sge.main.MainFlags;
@@ -74,6 +71,7 @@ public class Main extends MainApp
 		Packets.registerPacket(SPong::new);
 		Packets.registerPacket(SSetColor::new);
 		Packets.registerPacket(SShootProjectile::new);
+		Packets.registerPacket(SRequestObject::new);
 	}
 
 	public Renderer getRenderer()

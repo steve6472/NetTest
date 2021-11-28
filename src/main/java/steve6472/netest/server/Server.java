@@ -9,6 +9,7 @@ import steve6472.sge.main.networking.*;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.Optional;
 import java.util.UUID;
 
 /**********************
@@ -52,17 +53,17 @@ public class Server extends UDPServer
 		UUID uuid = UUID.randomUUID();
 		ServerPlayer player = new ServerPlayer(this, uuid, client);
 		sendPacketToClient(new CSetUUID(uuid), client);
-		space.players.add(player);
+		space.objects.put(uuid, player);
 
-		for (ServerPlayer serverPlayer : space.players)
+		space.objects.forEach((u, o) ->
 		{
-			if (serverPlayer.client == client)
-			{
-				continue;
-			}
+			int var = 0;
+			if (o instanceof ServerPlayer sp)
+				var = sp.color;
 
-			sendPacketToClient(new CSpawn(CSpawn.Type.PLAYER, serverPlayer.position, serverPlayer.color, serverPlayer.rotation, serverPlayer.uuid), client);
-		}
+			if (!u.equals(uuid))
+				sendPacketToClient(new CSpawn(o.type(), o.position, var, o.rotation, o.uuid), client);
+		});
 
 		sendPacketExcept(new CSpawn(CSpawn.Type.PLAYER, player.position, player.color, player.rotation, player.uuid), client);
 	}
@@ -104,13 +105,15 @@ public class Server extends UDPServer
 
 	public ServerPlayer findPlayer(ConnectedClient client)
 	{
-		for (ServerPlayer player : space.players)
-		{
-			if (player.client == client)
-				return player;
-		}
+		Optional<ServerPlayer> first = space.objects
+			.values()
+			.stream()
+			.filter(o -> o instanceof ServerPlayer)
+			.map(o -> (ServerPlayer) o)
+			.filter(p -> p.client == client)
+			.findFirst();
 
-		return null;
+		return first.orElse(null);
 	}
 
 	public ConnectedClient findConnectedClient(DatagramPacket packet)

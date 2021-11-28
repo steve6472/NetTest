@@ -1,5 +1,6 @@
 package steve6472.netest.server.objects;
 
+import steve6472.netest.network.forclient.CSpawn;
 import steve6472.netest.network.forclient.CUpdatePosition;
 import steve6472.netest.server.Server;
 import steve6472.netest.server.ServerSpaceObject;
@@ -35,5 +36,11 @@ public class SmallAsteroid extends ServerSpaceObject
 		{
 			server.sendPacket(new CUpdatePosition(position, rotation, uuid));
 		}
+	}
+
+	@Override
+	public CSpawn.Type type()
+	{
+		return CSpawn.Type.SMALL_ASTEROID;
 	}
 }

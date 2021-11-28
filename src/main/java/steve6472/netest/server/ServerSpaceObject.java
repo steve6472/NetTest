@@ -2,6 +2,7 @@ package steve6472.netest.server;
 
 import net.querz.nbt.tag.CompoundTag;
 import steve6472.netest.SpaceObject;
+import steve6472.netest.network.forclient.CSpawn;
 
 import java.util.UUID;
 
@@ -14,6 +15,7 @@ import java.util.UUID;
 public abstract class ServerSpaceObject extends SpaceObject
 {
 	protected final Server server;
+	public boolean shouldBeRemoved;
 
 	public ServerSpaceObject(Server server, UUID id)
 	{
@@ -32,4 +34,6 @@ public abstract class ServerSpaceObject extends SpaceObject
 	{
 
 	}
+
+	public abstract CSpawn.Type type();
 }

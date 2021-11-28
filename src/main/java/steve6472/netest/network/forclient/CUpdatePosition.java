@@ -4,6 +4,7 @@ import org.joml.Vector2d;
 import steve6472.netest.client.Client;
 import steve6472.netest.client.ClientSpaceObject;
 import steve6472.netest.network.CPacket;
+import steve6472.netest.network.forserver.SRequestObject;
 import steve6472.sge.main.networking.PacketData;
 
 import java.util.UUID;
@@ -43,7 +44,10 @@ public class CUpdatePosition extends CPacket
 		{
 			ClientSpaceObject object = client.space.getObject(uuid);
 			if (object == null)
+			{
+				client.sendPacket(new SRequestObject(uuid));
 				return;
+			}
 
 			object.position.set(position);
 			object.rotation = rotation;

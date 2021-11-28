@@ -2,6 +2,7 @@ package steve6472.netest.server;
 
 import steve6472.netest.network.forclient.CPing;
 import steve6472.netest.network.forclient.CRemove;
+import steve6472.netest.network.forclient.CSpawn;
 import steve6472.sge.main.networking.ConnectedClient;
 
 import java.util.UUID;
@@ -18,7 +19,6 @@ public class ServerPlayer extends ServerSpaceObject
 	public int lastPing;
 	public long pingSent;
 	public int pingNotReceivedCount;
-	public boolean shouldBeRemoved = false;
 	public int color;
 
 	public ServerPlayer(Server server, UUID id, ConnectedClient client)
@@ -53,5 +53,11 @@ public class ServerPlayer extends ServerSpaceObject
 		{
 			lastPing--;
 		}
+	}
+
+	@Override
+	public CSpawn.Type type()
+	{
+		return CSpawn.Type.PLAYER;
 	}
 }

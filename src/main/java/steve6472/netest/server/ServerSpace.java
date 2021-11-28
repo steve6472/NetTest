@@ -17,7 +17,6 @@ public class ServerSpace implements ISaveable
 {
 	private final Server server;
 
-	public List<ServerPlayer> players = new ArrayList<>();
 	public Map<UUID, ServerSpaceObject> objects = new HashMap<>();
 
 	public ServerSpace(Server server)
@@ -27,16 +26,15 @@ public class ServerSpace implements ISaveable
 
 	public void tick()
 	{
-		for (Iterator<ServerPlayer> iterator = players.iterator(); iterator.hasNext(); )
+		Set<UUID> toBeRemoved = new HashSet<>();
+		objects.forEach((u, o) ->
 		{
-			ServerPlayer player = iterator.next();
-			if (player.shouldBeRemoved)
-				iterator.remove();
+			if (o.shouldBeRemoved)
+				toBeRemoved.add(u);
 			else
-				player.tick();
-		}
-
-		objects.forEach((u, o) -> o.tick());
+				o.tick();
+		});
+		toBeRemoved.forEach(u -> objects.remove(u));
 
 		if (server.serverTick == 10)
 		{
