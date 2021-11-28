@@ -9,9 +9,12 @@ import steve6472.sge.gfx.game.stack.Stack;
 import steve6472.sge.main.KeyList;
 import steve6472.sge.main.networking.Packet;
 import steve6472.sge.main.networking.UDPClient;
+import steve6472.sge.main.util.Pair;
 
 import java.net.DatagramPacket;
 import java.util.UUID;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**********************
  * Created by steve6472 (Mirek Jozefek)
@@ -22,6 +25,7 @@ import java.util.UUID;
 public class Client extends UDPClient
 {
 	private final Main main;
+	private final BlockingQueue<Pair<Packet<?>, DatagramPacket>> packetQueue;
 
 	public ClientSpace space;
 
@@ -44,6 +48,7 @@ public class Client extends UDPClient
 		setIPacketHandler(new IClientHandler());
 		main = Main.getInstance();
 		space = new ClientSpace();
+		packetQueue = new LinkedBlockingQueue<>();
 	}
 
 	public void render(Stack stack)
@@ -60,6 +65,8 @@ public class Client extends UDPClient
 
 	public void tick()
 	{
+		handlePackets();
+
 		float acceleration = 0;
 		if (main.isKeyPressed(KeyList.W)) acceleration--;
 		if (main.isKeyPressed(KeyList.S)) acceleration++;
@@ -86,17 +93,42 @@ public class Client extends UDPClient
 		}
 	}
 
+	private void handlePackets()
+	{
+		while (!packetQueue.isEmpty())
+		{
+			Pair<Packet<?>, DatagramPacket> packetPair = null;
+			try
+			{
+				packetPair = packetQueue.take();
+			} catch (InterruptedException e)
+			{
+				e.printStackTrace();
+				continue;
+			}
+
+			Packet<?> packet = packetPair.a();
+			if (packet instanceof CPacket sp)
+			{
+				sp.handlePacket(this);
+			} else
+			{
+				super.handlePacket(packet, packetPair.b());
+			}
+		}
+	}
+
 	@Override
 	public void handlePacket(Packet<?> packet, DatagramPacket sender)
 	{
 		//TODO: push packets into BlockingList and at the end of each tick pull them all out and process them
 		System.out.println("Client got packet: " + packet);
-		if (packet instanceof CPacket sp)
+		try
 		{
-			sp.handlePacket(this);
-		} else
+			packetQueue.put(new Pair<>(packet, sender));
+		} catch (InterruptedException e)
 		{
-			super.handlePacket(packet, sender);
+			e.printStackTrace();
 		}
 	}
 }
