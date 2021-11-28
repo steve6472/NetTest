@@ -64,6 +64,7 @@ public class Main extends MainApp
 		Packets.registerPacket(CUpdatePosition::new);
 		Packets.registerPacket(CPing::new);
 		Packets.registerPacket(CUpdatePing::new);
+		Packets.registerPacket(CRemove::new);
 
 		Packets.registerPacket(SUpdatePosition::new);
 		Packets.registerPacket(SPong::new);

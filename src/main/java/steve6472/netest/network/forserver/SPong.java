@@ -27,6 +27,7 @@ public class SPong extends SPacket
 		ConnectedClient connectedClient = server.findConnectedClient(getSender());
 		ServerPlayer player = server.findPlayer(connectedClient);
 		long ping = time - player.pingSent;
+		player.pingNotReceivedCount = 0;
 		server.sendPacketToClient(new CUpdatePing(ping), connectedClient);
 	}
 

@@ -6,6 +6,7 @@ import steve6472.netest.network.forclient.CSpawn;
 import steve6472.netest.server.objects.SmallAsteroid;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**********************
@@ -28,9 +29,13 @@ public class ServerSpace implements ISaveable
 
 	public void tick()
 	{
-		for (ServerPlayer player : players)
+		for (Iterator<ServerPlayer> iterator = players.iterator(); iterator.hasNext(); )
 		{
-			player.tick();
+			ServerPlayer player = iterator.next();
+			if (player.shouldBeRemoved)
+				iterator.remove();
+			else
+				player.tick();
 		}
 
 		for (ServerSpaceObject object : objects)

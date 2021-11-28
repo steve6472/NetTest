@@ -12,4 +12,7 @@ public class ServerOptions
 
 	// In ticks
 	public static final int PING_DELAY = 60 * 5;
+
+	// Disconnect player after not responding to this many pings
+	public static final int DISCONNECT_THREASHOLD = 2;
 }
