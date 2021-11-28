@@ -6,9 +6,8 @@ import steve6472.netest.client.gfx.Renderer;
 import steve6472.netest.client.gfx.Shaders;
 import steve6472.netest.client.gui.InGameGui;
 import steve6472.netest.client.gui.MainMenu;
-import steve6472.netest.network.forclient.CSetUUID;
-import steve6472.netest.network.forclient.CSpawn;
-import steve6472.netest.network.forclient.CUpdatePosition;
+import steve6472.netest.network.forclient.*;
+import steve6472.netest.network.forserver.SPong;
 import steve6472.netest.network.forserver.SUpdatePosition;
 import steve6472.netest.server.Server;
 import steve6472.sge.main.MainApp;
@@ -63,8 +62,11 @@ public class Main extends MainApp
 		Packets.registerPacket(CSetUUID::new);
 		Packets.registerPacket(CSpawn::new);
 		Packets.registerPacket(CUpdatePosition::new);
+		Packets.registerPacket(CPing::new);
+		Packets.registerPacket(CUpdatePing::new);
 
 		Packets.registerPacket(SUpdatePosition::new);
+		Packets.registerPacket(SPong::new);
 	}
 
 	public Renderer getRenderer()

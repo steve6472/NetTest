@@ -1,5 +1,6 @@
 package steve6472.netest.server;
 
+import steve6472.netest.network.forclient.CPing;
 import steve6472.sge.main.networking.ConnectedClient;
 
 import java.util.UUID;
@@ -13,6 +14,8 @@ import java.util.UUID;
 public class ServerPlayer extends ServerSpaceObject
 {
 	public final ConnectedClient client;
+	public int lastPing;
+	public long pingSent;
 
 	public ServerPlayer(Server server, UUID id, ConnectedClient client)
 	{
@@ -23,6 +26,14 @@ public class ServerPlayer extends ServerSpaceObject
 	@Override
 	public void tick()
 	{
-
+		if (lastPing <= 0)
+		{
+			server.sendPacketToClient(new CPing(), client);
+			pingSent = System.nanoTime();
+			lastPing = ServerOptions.PING_DELAY;
+		} else
+		{
+			lastPing--;
+		}
 	}
 }

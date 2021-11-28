@@ -4,7 +4,6 @@ import net.querz.nbt.tag.CompoundTag;
 import steve6472.netest.ISaveable;
 import steve6472.netest.network.forclient.CSpawn;
 import steve6472.netest.server.objects.SmallAsteroid;
-import steve6472.sge.main.util.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +28,11 @@ public class ServerSpace implements ISaveable
 
 	public void tick()
 	{
+		for (ServerPlayer player : players)
+		{
+			player.tick();
+		}
+
 		for (ServerSpaceObject object : objects)
 		{
 			object.tick();
@@ -42,10 +46,10 @@ public class ServerSpace implements ISaveable
 
 	private void createSpace()
 	{
-		for (int i = 0; i < 16; i++)
-		{
-			spawnSmallAsteroid(0, RandomUtil.randomDouble(-5, 5), RandomUtil.randomDouble(-5, 5), (float) RandomUtil.randomRadian());
-		}
+//		for (int i = 0; i < 16; i++)
+//		{
+//			spawnSmallAsteroid(0, RandomUtil.randomDouble(-5, 5), RandomUtil.randomDouble(-5, 5), (float) RandomUtil.randomRadian());
+//		}
 	}
 
 	public void spawnSmallAsteroid(int variant, double x, double y, float rotation)

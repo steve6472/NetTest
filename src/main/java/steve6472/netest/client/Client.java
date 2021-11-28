@@ -29,6 +29,12 @@ public class Client extends UDPClient
 
 	public ClientSpace space;
 
+	public long ping;
+
+	/*
+	 * Player
+	 */
+
 	public UUID uuid;
 	public Vector2d position = new Vector2d();
 	public Vector2d motion = new Vector2d();
