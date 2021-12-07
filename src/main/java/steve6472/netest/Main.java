@@ -66,6 +66,7 @@ public class Main extends MainApp
 		Packets.registerPacket(CRemove::new);
 		Packets.registerPacket(CSetColor::new);
 		Packets.registerPacket(CUpdateMaxShootDelay::new);
+		Packets.registerPacket(CUpdateScore::new);
 
 		Packets.registerPacket(SUpdatePosition::new);
 		Packets.registerPacket(SPong::new);

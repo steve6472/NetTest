@@ -8,7 +8,7 @@ package steve6472.netest.server;
  ***********************/
 public class ServerOptions
 {
-	public static final double MAXIMUM_MOVE_DISTANCE = 2;
+	public static final double MAXIMUM_MOVE_DISTANCE = 5;
 
 	// In ticks
 	public static final int PING_DELAY = 60 * 5;

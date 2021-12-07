@@ -31,7 +31,7 @@ public class SSetColor extends SPacket
 	{
 		ConnectedClient client = server.findConnectedClient(getSender());
 		ServerPlayer player = server.findPlayer(client);
-		player.color = color;
+		player.variant = color;
 		server.sendPacketExcept(new CSetColor(color, player.uuid), client);
 	}
 

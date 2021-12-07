@@ -4,6 +4,7 @@ import org.joml.Vector2d;
 import steve6472.netest.Main;
 import steve6472.netest.network.CPacket;
 import steve6472.netest.network.IClientHandler;
+import steve6472.netest.network.forclient.CSetUUID;
 import steve6472.netest.network.forserver.SShootProjectile;
 import steve6472.netest.network.forserver.SUpdatePosition;
 import steve6472.sge.gfx.game.stack.Stack;
@@ -51,6 +52,7 @@ public class Client extends UDPClient
 
 	public long maxShootDelay = 1_000_000_000;
 	public long lastShot;
+	public short score;
 
 	/**
 	 * @param ip   Client is gonna connect to this IP
@@ -148,7 +150,13 @@ public class Client extends UDPClient
 			Packet<?> packet = packetPair.a();
 			if (packet instanceof CPacket sp)
 			{
-				sp.handlePacket(this);
+				if (uuid == null && sp instanceof CSetUUID)
+				{
+					sp.handlePacket(this);
+				} else
+				{
+					sp.handlePacket(this);
+				}
 			} else
 			{
 				super.handlePacket(packet, packetPair.b());

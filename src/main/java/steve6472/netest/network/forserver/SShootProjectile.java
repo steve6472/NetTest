@@ -36,7 +36,7 @@ public class SShootProjectile extends SPacket
 		ConnectedClient client = server.findConnectedClient(getSender());
 		ServerPlayer player = server.findPlayer(client);
 
-		SProjectile projectile = new SProjectile(server);
+		SProjectile projectile = new SProjectile(server, player.uuid);
 		double correction = RandomUtil.flipACoin() ? Math.toRadians(15) : -Math.toRadians(15);
 		projectile.position.set(player.position.x - Math.sin(player.rotation + correction) * 0.6, player.position.y - Math.cos(player.rotation + correction) * 0.6);
 		projectile.rotation = rotation;

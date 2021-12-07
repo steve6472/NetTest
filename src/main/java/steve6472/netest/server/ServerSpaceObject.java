@@ -16,6 +16,7 @@ public abstract class ServerSpaceObject extends SpaceObject
 {
 	protected final Server server;
 	public boolean shouldBeRemoved;
+	public int variant;
 
 	public ServerSpaceObject(Server server, UUID id)
 	{
@@ -33,6 +34,11 @@ public abstract class ServerSpaceObject extends SpaceObject
 	public void read(CompoundTag tag)
 	{
 
+	}
+
+	public final void kill()
+	{
+		this.shouldBeRemoved = true;
 	}
 
 	public abstract CSpawn.Type type();

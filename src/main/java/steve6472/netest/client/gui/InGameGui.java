@@ -48,5 +48,6 @@ public class InGameGui extends Gui
 		Font.render(String.format("Pos: %.2f/%.2f", client.position.x, client.position.y), 5, 5);
 		Font.render("UUID: " + client.uuid, 5, 15);
 		Font.render("Ping: " + client.ping / 1_000_000_000f, 5, 25);
+		Font.render("Score: " + client.score, 5, 35);
 	}
 }

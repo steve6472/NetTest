@@ -3,7 +3,6 @@ package steve6472.netest.network.forserver;
 import steve6472.netest.network.SPacket;
 import steve6472.netest.network.forclient.CSpawn;
 import steve6472.netest.server.Server;
-import steve6472.netest.server.ServerPlayer;
 import steve6472.netest.server.ServerSpaceObject;
 import steve6472.sge.main.networking.PacketData;
 
@@ -33,11 +32,7 @@ public class SRequestObject extends SPacket
 	{
 		ServerSpaceObject object = server.space.objects.get(uuid);
 
-		int var = 0;
-		if (object instanceof ServerPlayer sp)
-			var = sp.color;
-
-		server.sendPacketToClient(new CSpawn(object.type(), object.position, var, object.rotation, object.uuid), server.findConnectedClient(getSender()));
+		server.sendPacketToClient(new CSpawn(object.type(), object.position, object.variant, object.rotation, object.uuid), server.findConnectedClient(getSender()));
 	}
 
 	@Override

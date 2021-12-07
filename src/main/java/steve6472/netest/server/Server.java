@@ -57,15 +57,11 @@ public class Server extends UDPServer
 
 		space.objects.forEach((u, o) ->
 		{
-			int var = 0;
-			if (o instanceof ServerPlayer sp)
-				var = sp.color;
-
 			if (!u.equals(uuid))
-				sendPacketToClient(new CSpawn(o.type(), o.position, var, o.rotation, o.uuid), client);
+				sendPacketToClient(new CSpawn(o.type(), o.position, o.variant, o.rotation, o.uuid), client);
 		});
 
-		sendPacketExcept(new CSpawn(CSpawn.Type.PLAYER, player.position, player.color, player.rotation, player.uuid), client);
+		sendPacketExcept(new CSpawn(CSpawn.Type.PLAYER, player.position, player.variant, player.rotation, player.uuid), client);
 	}
 
 	@Override

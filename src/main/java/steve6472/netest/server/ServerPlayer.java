@@ -1,8 +1,7 @@
 package steve6472.netest.server;
 
-import steve6472.netest.network.forclient.CPing;
-import steve6472.netest.network.forclient.CRemove;
-import steve6472.netest.network.forclient.CSpawn;
+import org.joml.Vector2d;
+import steve6472.netest.network.forclient.*;
 import steve6472.sge.main.networking.ConnectedClient;
 
 import java.util.UUID;
@@ -19,7 +18,9 @@ public class ServerPlayer extends ServerSpaceObject
 	public int lastPing;
 	public long pingSent;
 	public int pingNotReceivedCount;
-	public int color;
+
+	public short score;
+	public short lastScore;
 
 	public ServerPlayer(Server server, UUID id, ConnectedClient client)
 	{
@@ -53,6 +54,19 @@ public class ServerPlayer extends ServerSpaceObject
 		{
 			lastPing--;
 		}
+
+		if (lastScore != score)
+		{
+			lastScore = score;
+
+			server.sendPacket(new CUpdateScore(score));
+		}
+	}
+
+	public void teleport(double x, double y)
+	{
+		position.set(x, y);
+		server.sendPacket(new CUpdatePosition(new Vector2d(x, y), 0, uuid));
 	}
 
 	@Override

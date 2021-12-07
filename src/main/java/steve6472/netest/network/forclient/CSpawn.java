@@ -6,6 +6,7 @@ import steve6472.netest.client.Models;
 import steve6472.netest.client.objects.DestructableObject;
 import steve6472.netest.client.objects.OtherPlayer;
 import steve6472.netest.client.objects.Projectile;
+import steve6472.netest.client.objects.Resource;
 import steve6472.netest.network.CPacket;
 import steve6472.sge.main.networking.PacketData;
 
@@ -69,6 +70,12 @@ public class CSpawn extends CPacket
 			p.position.set(x, y);
 			p.rotation = rotation;
 			client.space.objects.put(uuid, p);
+		} else if (type == Type.RESOURCE)
+		{
+			Resource resource = new Resource(uuid);
+			resource.position.set(x, y);
+			resource.rotation = rotation;
+			client.space.objects.put(uuid, resource);
 		}
 	}
 
@@ -96,7 +103,7 @@ public class CSpawn extends CPacket
 
 	public enum Type
 	{
-		PLAYER, SMALL_ASTEROID, PROJECTILE
+		PLAYER, SMALL_ASTEROID, PROJECTILE, RESOURCE
 	}
 
 	@Override
