@@ -2,6 +2,7 @@ package steve6472.netest.client;
 
 import org.joml.Vector2d;
 import steve6472.netest.Main;
+import steve6472.netest.SecondCounter;
 import steve6472.netest.network.CPacket;
 import steve6472.netest.network.IClientHandler;
 import steve6472.netest.network.forclient.CSetUUID;
@@ -33,6 +34,7 @@ public class Client extends UDPClient
 	public ClientSpace space;
 
 	public long ping;
+	public SecondCounter recievedPacketCounter;
 
 	/*
 	 * Player
@@ -66,6 +68,7 @@ public class Client extends UDPClient
 		main = Main.getInstance();
 		space = new ClientSpace();
 		packetQueue = new LinkedBlockingQueue<>();
+		recievedPacketCounter = new SecondCounter();
 	}
 
 	public void render(Stack stack)
@@ -167,6 +170,7 @@ public class Client extends UDPClient
 	@Override
 	public void handlePacket(Packet<?> packet, DatagramPacket sender)
 	{
+		recievedPacketCounter.tick();
 		System.out.println("Client got packet: " + packet);
 		try
 		{
